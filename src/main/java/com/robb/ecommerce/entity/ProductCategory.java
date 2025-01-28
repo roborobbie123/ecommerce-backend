@@ -1,16 +1,13 @@
 package com.robb.ecommerce.entity;
 
-import java.util.Set;
-import lombok.Getter;
-import lombok.Setter;
-
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "product_category")
-@Getter
-@Setter
 public class ProductCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -22,4 +19,27 @@ public class ProductCategory {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Product> products;
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getCategoryName() {
+        return this.categoryName;
+    }
+
+    public Set<Product> getProducts() {
+        return this.products;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 }
